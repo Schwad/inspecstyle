@@ -2,6 +2,7 @@ InSpecStyle/DeprecatedAttributes:
   Description: 'Attributes are deprecated in favor of inputs'
   Enabled: true
   VersionAdded: '0.82'
+  StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
 
 InspecStyle/FirstCop:
   Description: 'This first cop is a sandbox for exploring new InspecStyle cops.'

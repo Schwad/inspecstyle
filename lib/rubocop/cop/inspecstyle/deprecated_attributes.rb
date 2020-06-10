@@ -4,8 +4,9 @@
 module RuboCop
   module Cop
     module InSpecStyle
+      # Checks if deprecated method attribute is used.
       #
-      # @example EnforcedStyle: input (default)
+      # @example
       #   # Attributes have been deprecated for inputs
       #   # https://github.com/inspec/inspec/issues/3802
       #
@@ -33,7 +34,8 @@ module RuboCop
 
         def range(node)
           # Only highlights the method 'attribute'
-          range_between(node.source_range.begin_pos,
+          range_between(
+            node.source_range.begin_pos,
             node.source_range.begin_pos+9
           )
         end
