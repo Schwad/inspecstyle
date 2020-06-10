@@ -29,6 +29,10 @@ ruby-parse -e '1'
 (int 1)
 ```
 
+Example usage for testing against example code:
+
+`bundle exec rubocop violations.rb --only InSpecStyle/DeprecatedAttributes`
+
 Processing via IRB for AST parsing:
 
 ```ruby
