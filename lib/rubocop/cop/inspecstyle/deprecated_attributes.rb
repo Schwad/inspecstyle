@@ -5,7 +5,7 @@ module RuboCop
   module Cop
     module InSpecStyle
       #
-      # @example DeprecatedAttributes: Do not use attributes
+      # @example EnforcedStyle: input (default)
       #   # Attributes have been deprecated for inputs
       #   # https://github.com/inspec/inspec/issues/3802
       #
