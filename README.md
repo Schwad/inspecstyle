@@ -1,4 +1,4 @@
-# Rubocop::InSpecStyle
+# InSpecStyle
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubocop/inspecstyle`. To experiment with that code, run `bin/console` for an interactive prompt.
 
@@ -22,7 +22,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+InSpecStyle integrates with rubocop to lint your InSpec code.
+
+```yaml
+#.rubocop.yml
+require:
+  - inspecstyle
+```
+
+This gem must be installed to use the [InSpecStyle atom linter package](https://atom.io/packages/inspecstyle).
+
+To only run these cops on your local rubocop run, execute:
+
+`rubocop . --only InSpecStyle`
+
+## TODO:
+
+- Instead of referencing issues in the cops, point to a general `inspecstyle.guide`
 
 ## Development
 
@@ -32,7 +48,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/inspecstyle. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/inspecstyle/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/schwad/inspecstyle. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/schwad]/inspecstyle/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
@@ -41,4 +57,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Rubocop::InSpecStyle project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/inspecstyle/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Rubocop::InSpecStyle project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/schwad/inspecstyle/blob/master/CODE_OF_CONDUCT.md).
