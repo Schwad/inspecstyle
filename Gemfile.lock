@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-inspecstyle (0.1.0)
+    inspecstyle (0.1.0)
       rubocop
 
 GEM
@@ -48,7 +48,7 @@ DEPENDENCIES
   minitest (~> 5.0)
   rake (~> 12.0)
   rspec
-  rubocop-inspecstyle!
+  inspecstyle!
 
 BUNDLED WITH
    2.1.4
