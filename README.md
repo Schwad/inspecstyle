@@ -43,6 +43,37 @@ To only run these cops on your local rubocop run, execute:
 - Known issue, resources that work on manual runs but not in `atom` package: [
   - AzureGenericResource
 ]
+- Cop ideas:
+```
+its('minimum_days_between_password_change') { should eq 0 } becomes 'mindays'
+its('maximum_days_between_password_change') { should eq 0 } becomes 'maxdays'
+Inspec.deprecate(:resource_user_serverspec_compat, "The user resource `has_home_directory?` matcher is deprecated. Please use `its('home')`.")
+Inspec.deprecate(:resource_user_serverspec_compat, "The user resource `has_authorized_key?` matcher is deprecated. There is no currently implemented alternative")
+
+
+shadow resource deprecations
+(e.g.)
+describe shadow('/etc/my-custom-place/shadow') do
+  its('count') { should eq 32 }
+end
+
+property deprecations:
+
+user -> users
+password -> passwords
+last_change -> last_changes
+expiry_date -> expiry_dates
+lines (no replacement)
+
+e.g.
+
+sql = oracledb_session(user: 'my_user', pass: 'password')
+      describe sql.query(\"SELECT UPPER(VALUE) AS VALUE FROM V$PARAMETER WHERE UPPER(NAME)='AUDIT_SYS_OPERATIONS'\").row(0).column('value') do
+        its('value') { should eq 'TRUE' }
+      end
+
+oracledb_session deprecated `pass`, use `password` instead
+```
 
 ## Development
 

@@ -11,6 +11,16 @@ InSpecStyle/DeprecatedAttributes:
   StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
   PreferredReplacement: 'input'
 
+InSpecStyle/OracleDbSessionPass:
+  Description: 'Use `pass` instead of `password`'
+  Enabled: true
+  VersionAdded: '0.82'
+
+InSpecStyle/ShadowProperties:
+  Description: '`user` attribute for shadow resources is deprecated for `users`'
+  Enabled: true
+  VersionAdded: '0.82'
+
 InspecStyle/FirstCop:
   Description: 'This first cop is a sandbox for exploring new InspecStyle cops.'
   Enabled: true
