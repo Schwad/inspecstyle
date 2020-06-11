@@ -9,6 +9,7 @@ InSpecStyle/DeprecatedAttributes:
   Enabled: true
   VersionAdded: '0.82'
   StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
+  PreferredReplacement: 'input'
 
 InspecStyle/FirstCop:
   Description: 'This first cop is a sandbox for exploring new InspecStyle cops.'

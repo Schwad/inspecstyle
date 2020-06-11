@@ -27,15 +27,25 @@ module RuboCop
 
         def on_send(node)
           return unless attribute?(node)
+
           add_offense(node, location: node.loc.selector)
         end
 
-        # def autocorrect
-        #   ->(corrector) do
-        #     corrector.insert_before(node.source_range, 'input')
-        #     corrector.remove(node.source_range, 'attribute')
-        #   end
-        # end
+        def autocorrect(node)
+          lambda do |corrector|
+            corrector.replace(offense_range(node), preferred_replacement)
+          end
+        end
+
+        private
+
+        def offense_range(node)
+          node.loc.selector
+        end
+
+        def preferred_replacement
+          cop_config.fetch('PreferredReplacement')
+        end
       end
     end
   end
