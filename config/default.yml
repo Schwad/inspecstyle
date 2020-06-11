@@ -1,3 +1,9 @@
+InSpecStyle/AzureGenericResource:
+  Description: 'Do not use azure_generic_resource'
+  Enabled: true
+  VersionAdded: '0.82'
+  StyleGuide: 'https://github.com/inspec/inspec/issues/3131'
+
 InSpecStyle/DeprecatedAttributes:
   Description: 'Attributes are deprecated in favor of inputs'
   Enabled: true

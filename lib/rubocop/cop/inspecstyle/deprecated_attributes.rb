@@ -27,17 +27,7 @@ module RuboCop
 
         def on_send(node)
           return unless attribute?(node)
-          add_offense(node, location: range(node))
-        end
-
-        private
-
-        def range(node)
-          # Only highlights the method 'attribute'
-          range_between(
-            node.source_range.begin_pos,
-            node.source_range.begin_pos+9
-          )
+          add_offense(node, location: node.loc.selector)
         end
 
         # def autocorrect
