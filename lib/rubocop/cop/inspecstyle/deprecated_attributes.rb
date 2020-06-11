@@ -6,7 +6,7 @@ module RuboCop
     module InSpecStyle
       # Checks if deprecated method attribute is used.
       #
-      # @example
+      # @example EnforcedStyle: InSpecStyle (default)
       #   # Attributes have been deprecated for inputs
       #   # https://github.com/inspec/inspec/issues/3802
       #
