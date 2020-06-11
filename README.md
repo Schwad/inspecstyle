@@ -40,6 +40,9 @@ To only run these cops on your local rubocop run, execute:
 ## TODO:
 
 - Instead of referencing issues in the cops, point to a general `inspecstyle.guide`
+- Known issue, resources that work on manual runs but not in `atom` package: [
+  - AzureGenericResource
+]
 
 ## Development
 
