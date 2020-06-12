@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-# NOTE TO SELF - this one isn't currently working even though my pattern works in Rubocop's bin/console
+# NOTE TO SELF - this one works BUT not if other its statements are defined. Needs
+# to work in any arrangement. This is a powerful one to crack as this pattern
+# will be used in a LOT of other cops. 
 
 module RuboCop
   module Cop
@@ -27,8 +29,8 @@ module RuboCop
         # See https://github.com/rubocop-hq/rubocop-ast/blob/master/lib/rubocop/node_pattern.rb
         #
         # For example
-        MSG = 'Use `#users` instead of `#user`. This property will be removed '\
-              'in InSpec 5'
+        MSG = 'Use `:%<modifier>ss` instead of `:%<modifier>s` as a property ' \
+        'for the `shadow` resource. This property will be removed in InSpec 5'
 
         def_node_matcher :shadow_resource_user_property?, <<~PATTERN
           (block
@@ -41,17 +43,17 @@ module RuboCop
         PATTERN
 
         def on_block(node)
-          return unless shadow_resource_user_property?(node) do |result|
-            require 'pry'
-            # binding.pry
-            add_offense(node, message: message(result))
+          return unless shadow_resource_user_property?(node) do |modifier|
+            message = format(MSG, modifier: modifier)
+            range = locate_range(modifier, node)
+            add_offense(node, message: message, location: range)
           end
         end
 
         private
 
-        def message(result)
-          MSG #
+        def locate_range(modifier, node)
+          node.children.find { |child| child.type == :block }.children.first.children.find{|x| x == s(:str, modifier)}.source_range
         end
       end
     end

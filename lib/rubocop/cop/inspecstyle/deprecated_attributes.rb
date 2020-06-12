@@ -18,7 +18,8 @@ module RuboCop
       class DeprecatedAttributes < Cop
         include RangeHelp
 
-        MSG = 'Use `#input` instead of `#attribute`.'
+        MSG = 'Use `#input` instead of `#attribute`. This will be removed in '\
+              'InSpec 5'
 
         def_node_matcher :attribute?, <<~PATTERN
           (send nil? :attribute ...)

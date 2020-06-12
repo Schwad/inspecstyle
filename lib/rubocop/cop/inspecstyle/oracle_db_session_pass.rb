@@ -14,7 +14,8 @@ module RuboCop
       #   sql = oracledb_session(user: 'my_user', password: 'password')
       class OracleDbSessionPass < Cop
         include MatchRange
-        MSG = 'Use `:password` instead of `:pass`.'
+        MSG = 'Use `:password` instead of `:pass`. This will be removed in '\
+              'InSpec 5'
 
         def_node_matcher :oracledb_session_pass?, <<~PATTERN
           (send _ :oracledb_session
