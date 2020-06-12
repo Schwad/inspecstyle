@@ -42,4 +42,7 @@ node = source.ast
 node.type
 node.children
 node.source
+NodePattern.new('(send ...)').match(node) # => true
 ```
+
+Correction docs at rubocop's: lib/rubocop/cop/corrector.rb

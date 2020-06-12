@@ -40,11 +40,18 @@ module RuboCop
                 (str ${"user" "password" "last_change" "expiry_date" "line"} ...) ...) ...) ...)
         PATTERN
 
-        def on_send(node)
-          return unless shadow_resource_user_property?(node)
-          require 'pry'
-          binding.pry
-          add_offense(node)
+        def on_block(node)
+          return unless shadow_resource_user_property?(node) do |result|
+            require 'pry'
+            # binding.pry
+            add_offense(node, message: message(result))
+          end
+        end
+
+        private
+
+        def message(result)
+          MSG #
         end
       end
     end
