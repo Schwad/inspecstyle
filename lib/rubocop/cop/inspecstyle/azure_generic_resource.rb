@@ -8,6 +8,7 @@ module RuboCop
       # @example EnforcedStyle: InSpecStyle (default)
       #   # azure_generic_resource has been deprecated
       #   # 'https://github.com/inspec/inspec/issues/3131'
+      #   # Since there are multiples replacements autocorrect is not supported.
       #
       #   # bad
       #   azure_generic_resource
