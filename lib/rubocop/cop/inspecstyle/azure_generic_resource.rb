@@ -26,7 +26,7 @@ module RuboCop
         def on_send(node)
           return unless azure_generic_resource?(node)
 
-          add_offense(node, location: node.loc.selector)
+          add_offense(node, location: :selector)
         end
       end
     end
