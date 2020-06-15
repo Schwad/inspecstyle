@@ -12,9 +12,10 @@ InSpecStyle/DeprecatedAttributes:
   PreferredReplacement: 'input'
 
 InSpecStyle/OracleDbSessionPass:
-  Description: 'Use `pass` instead of `password`'
+  Description: 'Use `password` instead of `pass`'
   Enabled: true
   VersionAdded: '0.82'
+  PreferredReplacement: 'password'
 
 InSpecStyle/ShadowProperties:
   Description: '`user` attribute for shadow resources is deprecated for `users`'

@@ -11,7 +11,8 @@ module RuboCop
       #   sql = oracledb_session(user: 'my_user', pass: 'password')
       #
       #   # good
-      #   sql = oracledb_session(user: 'my_user', password: 'password')
+      #   sql = oracledb_session(user: 'my_user', password: 'password
+      #
       class OracleDbSessionPass < Cop
         include MatchRange
         MSG = 'Use `:password` instead of `:pass`. This will be removed in '\
@@ -31,6 +32,24 @@ module RuboCop
         def on_send(node)
           return unless result = oracledb_session_pass?(node)
           add_offense(node, message: MSG)
+        end
+
+        def autocorrect(node)
+          lambda do |corrector|
+            corrector.replace(offense_range(node), preferred_replacement)
+          end
+        end
+
+        private
+
+        def offense_range(node)
+          node.descendants.map do |x|
+            x.descendants.find {|y| y.inspect == "s(:sym, :pass)"}
+          end.compact.first.source_range
+        end
+
+        def preferred_replacement
+          cop_config.fetch('PreferredReplacement')
         end
       end
     end
