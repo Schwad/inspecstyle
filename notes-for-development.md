@@ -45,4 +45,6 @@ node.source
 NodePattern.new('(send ...)').match(node) # => true
 ```
 
+- Implement CI
+
 Correction docs at rubocop's: lib/rubocop/cop/corrector.rb

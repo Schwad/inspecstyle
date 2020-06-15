@@ -1,3 +1,6 @@
+# WIP: This gem is __not__ live, but we would love your help and input! Core issue here: https://github.com/inspec/inspec/issues/5095
+
+
 # InSpecStyle
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubocop/inspecstyle`. To experiment with that code, run `bin/console` for an interactive prompt.

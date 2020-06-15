@@ -2,7 +2,7 @@
 
 # NOTE TO SELF - this one works BUT not if other its statements are defined. Needs
 # to work in any arrangement. This is a powerful one to crack as this pattern
-# will be used in a LOT of other cops. 
+# will be used in a LOT of other cops.
 
 module RuboCop
   module Cop
@@ -42,11 +42,31 @@ module RuboCop
                 (str ${"user" "password" "last_change" "expiry_date" "line"} ...) ...) ...) ...)
         PATTERN
 
+        def_node_matcher :shadow_resource_user_property_begin?, <<~PATTERN
+          (block
+            (send _ :describe
+              (send _ :shadow ...) ...)
+            (args ...)
+            (begin
+              (block
+                (send _ :its
+                  (str ${"user" "password" "last_change" "expiry_date" "line"} ...) ...) ...) ...) ...)
+        PATTERN
+
         def on_block(node)
-          return unless shadow_resource_user_property?(node) do |modifier|
-            message = format(MSG, modifier: modifier)
-            range = locate_range(modifier, node)
-            add_offense(node, message: message, location: range)
+          if shadow_resource_user_property?(node)
+            shadow_resource_user_property?(node) do |modifier|
+              message = format(MSG, modifier: modifier)
+              range = locate_range(modifier, node)
+              add_offense(node, message: message, location: range)
+            end
+          elsif shadow_resource_user_property_begin?(node)
+            # I believe I need a different matcher if there's other material in the block. This does not work yet
+            shadow_resource_user_property_begin? do |modifier|
+              message = format(MSG, modifier: modifier)
+              range = locate_range(modifier, node)
+              add_offense(node, message: message, location: range)
+            end
           end
         end
 
