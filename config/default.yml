@@ -15,6 +15,7 @@ InSpecStyle/FileSize:
   Description: '`size` property for `file` resource is deprecated for `size_kb` and will be removed in InSpec5'
   Enabled: true
   VersionAdded: '0.86'
+  PreferredReplacement: 'size_kb'
 
 InSpecStyle/OracleDbSessionPass:
   Description: 'Use `password` instead of `pass`'

@@ -1,58 +1,38 @@
 # frozen_string_literal: true
 
-# TODO: when finished, run `rake generate_cops_documentation` to update the docs
 module RuboCop
   module Cop
     module InSpecStyle
-      # TODO: Write cop description and example of bad / good code. For every
-      # `SupportedStyle` and unique configuration, there needs to be examples.
-      # Examples must have valid Ruby syntax. Do not use upticks.
-      #
-      # @example EnforcedStyle: bar (default)
-      #   # Description of the `bar` style.
+      # @example EnforcedStyle: InSpecStyle (default)
+      #   `size` property for `file` resource is deprecated for `size_kb` and will be removed in InSpec5
       #
       #   # bad
-      #   bad_bar_method
-      #
-      #   # bad
-      #   bad_bar_method(args)
-      #
-      #   # good
-      #   good_bar_method
+      #   describe file('my_file.txt') do
+      #     its('size') { should eq 12345 }
+      #   end
       #
       #   # good
-      #   good_bar_method(args)
-      #
-      # @example EnforcedStyle: foo
-      #   # Description of the `foo` style.
-      #
-      #   # bad
-      #   bad_foo_method
-      #
-      #   # bad
-      #   bad_foo_method(args)
-      #
-      #   # good
-      #   good_foo_method
-      #
-      #   # good
-      #   good_foo_method(args)
+      #   describe file('my_file.txt') do
+      #     its('size_kb') { should eq 12345 }
+      #   end
       #
       class FileSize < Cop
-        # TODO: Implement the cop in here.
-        #
-        # In many cases, you can use a node matcher for matching node pattern.
-        # See https://github.com/rubocop-hq/rubocop-ast/blob/master/lib/rubocop/node_pattern.rb
-        #
-        # For example
-        MSG = 'Use `#good_method` instead of `#bad_method`.'
 
-        def_node_matcher :bad_method?, <<~PATTERN
-          (send nil? :bad_method ...)
+        MSG = '`size` property for `file` resource is deprecated for `size_kb` and will be removed in InSpec5'
+
+        def_node_matcher :file_resource_size_property?, <<~PATTERN
+          (block
+            (send _ :describe
+              (send _ :file ...) ...)
+            (args ...)
+            (begin
+              (block
+                (send _ :its
+                  (send _ :size) ...) ...) ...) ...)
         PATTERN
 
-        def on_send(node)
-          return unless bad_method?(node)
+        def on_block(node)
+          return unless file_resource_size_property?(node)
 
           add_offense(node)
         end
