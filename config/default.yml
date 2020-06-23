@@ -11,6 +11,11 @@ InSpecStyle/DeprecatedAttributes:
   StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
   PreferredReplacement: 'input'
 
+InSpecStyle/FileSize:
+  Description: '`size` property for `file` resource is deprecated for `size_kb` and will be removed in InSpec5'
+  Enabled: true
+  VersionAdded: '0.86'
+
 InSpecStyle/OracleDbSessionPass:
   Description: 'Use `password` instead of `pass`'
   Enabled: true
@@ -18,7 +23,7 @@ InSpecStyle/OracleDbSessionPass:
   PreferredReplacement: 'password'
 
 InSpecStyle/ShadowProperties:
-  Description: '`user` attribute for shadow resources is deprecated for `users`'
+  Description: '`user` property for shadow resources is deprecated for `users`'
   Enabled: true
   VersionAdded: '0.82'
 
