@@ -52,7 +52,6 @@ module RuboCop
         def on_block(node)
           return unless inside_shadow_spec?(node)
           node.descendants.each do |descendant|
-            next unless deprecated_shadow_property?(descendant)
             deprecated_shadow_property?(descendant) do |violation|
               add_offense(
                 descendant,
