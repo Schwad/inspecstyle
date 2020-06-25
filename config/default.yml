@@ -1,3 +1,8 @@
+InSpecStyle/Apache:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '0.86'
+
 InSpecStyle/AzureGenericResource:
   Description: 'Do not use azure_generic_resource'
   Enabled: true
@@ -23,10 +28,20 @@ InSpecStyle/OracleDbSessionPass:
   VersionAdded: '0.82'
   PreferredReplacement: 'password'
 
+InSpecStyle/Script:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '0.86'
+
 InSpecStyle/ShadowProperties:
   Description: 'Deprecated properties for the shadow resource'
   Enabled: true
   VersionAdded: '0.82'
+
+InSpecStyle/UserResourceProperties:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '0.86'
 
 InspecStyle/FirstCop:
   Description: 'This first cop is a sandbox for exploring new InspecStyle cops.'

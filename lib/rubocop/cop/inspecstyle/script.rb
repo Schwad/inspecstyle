@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: when finished, run `rake generate_cops_documentation` to update the docs
 module RuboCop
   module Cop
     module InSpecStyle
@@ -37,14 +38,14 @@ module RuboCop
       #   # good
       #   good_foo_method(args)
       #
-      class FirstCop < Cop
+      class Script < Cop
         # TODO: Implement the cop in here.
         #
         # In many cases, you can use a node matcher for matching node pattern.
-        # See https://github.com/rubocop-hq/rubocop/blob/master/lib/rubocop/node_pattern.rb
+        # See https://github.com/rubocop-hq/rubocop-ast/blob/master/lib/rubocop/node_pattern.rb
         #
         # For example
-        MSG = 'Use `#good_method` instead of `#bad_method`. %<example_insertion>'
+        MSG = 'Use `#good_method` instead of `#bad_method`.'
 
         def_node_matcher :bad_method?, <<~PATTERN
           (send nil? :bad_method ...)
@@ -52,15 +53,8 @@ module RuboCop
 
         def on_send(node)
           return unless bad_method?(node)
-          message = format(MSG, example_insertion: node.first.source)
-          add_offense(node, message: message)
-        end
 
-        def autocorrect(node)
-          ->(corrector) do
-            corrector.insert_before(node.source_range, 'good_method')
-            corrector.remove(node.source_range)
-          end
+          add_offense(node)
         end
       end
     end
