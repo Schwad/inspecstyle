@@ -1,7 +1,8 @@
 InSpecStyle/Apache:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
+  Description: 'Use apache_conf instead of apache'
+  Enabled: true
   VersionAdded: '0.86'
+  PreferredReplacement: 'apache_conf'
 
 InSpecStyle/AzureGenericResource:
   Description: 'Do not use azure_generic_resource'
@@ -19,7 +20,7 @@ InSpecStyle/DeprecatedAttributes:
 InSpecStyle/FileSize:
   Description: '`size` property for `file` resource is deprecated for `size_kb` and will be removed in InSpec5'
   Enabled: true
-  VersionAdded: '0.86'
+  VersionAdded: '0.82'
   PreferredReplacement: 'size_kb'
 
 InSpecStyle/OracleDbSessionPass:
@@ -29,21 +30,17 @@ InSpecStyle/OracleDbSessionPass:
   PreferredReplacement: 'password'
 
 InSpecStyle/Script:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '0.86'
+  Description: 'Use powershell instead of script'
+  Enabled: true
+  VersionAdded: '0.82'
+  PreferredReplacement: 'powershell'
 
 InSpecStyle/ShadowProperties:
   Description: 'Deprecated properties for the shadow resource'
   Enabled: true
   VersionAdded: '0.82'
 
-InSpecStyle/UserResourceProperties:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '0.86'
-
-InspecStyle/FirstCop:
-  Description: 'This first cop is a sandbox for exploring new InspecStyle cops.'
+InSpecStyle/UsersResourceMatchers:
+  Description: 'Deprecated matchers for the users resource'
   Enabled: true
   VersionAdded: '0.82'
