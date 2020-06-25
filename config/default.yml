@@ -29,7 +29,7 @@ InSpecStyle/OracleDbSessionPass:
   VersionAdded: '0.82'
   PreferredReplacement: 'password'
 
-InSpecStyle/Script:
+InSpecStyle/ScriptResource:
   Description: 'Use powershell instead of script'
   Enabled: true
   VersionAdded: '0.82'
