@@ -21,6 +21,7 @@ module RuboCop
         PATTERN
 
         def on_send(node)
+          return unless inside_spec?(node)
           return unless script?(node)
 
           add_offense(node, location: :selector)
@@ -34,7 +35,7 @@ module RuboCop
 
         private
 
-        def inside_file_spec?(root)
+        def inside_spec?(root)
           spec?(root)
         end
 

@@ -1,60 +1,55 @@
 # frozen_string_literal: true
 
-# TODO: when finished, run `rake generate_cops_documentation` to update the docs
 module RuboCop
   module Cop
     module InSpecStyle
-      # TODO: Write cop description and example of bad / good code. For every
-      # `SupportedStyle` and unique configuration, there needs to be examples.
-      # Examples must have valid Ruby syntax. Do not use upticks.
+      # Do not use apache
       #
-      # @example EnforcedStyle: bar (default)
-      #   # Description of the `bar` style.
-      #
-      #   # bad
-      #   bad_bar_method
+      # @example EnforcedStyle: InSpecStyle (default)
+      #   # apache has been deprecated
+      #   # 'https://github.com/inspec/inspec/issues/3131'
+      #   # Since there are multiples replacements autocorrect is not supported.
       #
       #   # bad
-      #   bad_bar_method(args)
+      #   apache
       #
       #   # good
-      #   good_bar_method
-      #
-      #   # good
-      #   good_bar_method(args)
-      #
-      # @example EnforcedStyle: foo
-      #   # Description of the `foo` style.
-      #
-      #   # bad
-      #   bad_foo_method
-      #
-      #   # bad
-      #   bad_foo_method(args)
-      #
-      #   # good
-      #   good_foo_method
-      #
-      #   # good
-      #   good_foo_method(args)
+      #   azurerm_virtual_machine # use a specific resource pack resource
       #
       class Apache < Cop
-        # TODO: Implement the cop in here.
-        #
-        # In many cases, you can use a node matcher for matching node pattern.
-        # See https://github.com/rubocop-hq/rubocop-ast/blob/master/lib/rubocop/node_pattern.rb
-        #
-        # For example
-        MSG = 'Use `#good_method` instead of `#bad_method`.'
+        MSG = 'Use a `apache_conf` instead of `#apache`. '\
+              'This resource will be removed in InSpec 5.'
 
-        def_node_matcher :bad_method?, <<~PATTERN
-          (send nil? :bad_method ...)
+        def_node_matcher :spec?, <<-PATTERN
+          (block
+            (send nil? :describe ...)
+          ...)
+        PATTERN
+
+        def_node_matcher :apache?, <<~PATTERN
+          (send nil? :apache ...)
         PATTERN
 
         def on_send(node)
-          return unless bad_method?(node)
+          return unless apache?(node)
 
-          add_offense(node)
+          add_offense(node, location: :selector)
+        end
+
+        def autocorrect(node)
+          lambda do |corrector|
+            corrector.replace(node.loc.selector, preferred_replacement)
+          end
+        end
+
+        private
+
+        def inside_spec?(root)
+          spec?(root)
+        end
+
+        def preferred_replacement
+          cop_config.fetch('PreferredReplacement')
         end
       end
     end
