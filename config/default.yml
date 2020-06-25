@@ -24,7 +24,7 @@ InSpecStyle/OracleDbSessionPass:
   PreferredReplacement: 'password'
 
 InSpecStyle/ShadowProperties:
-  Description: '`user` property for shadow resources is deprecated for `users`'
+  Description: 'Deprecated properties for the shadow resource'
   Enabled: true
   VersionAdded: '0.82'
 

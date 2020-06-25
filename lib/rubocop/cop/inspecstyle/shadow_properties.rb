@@ -7,7 +7,7 @@
 module RuboCop
   module Cop
     module InSpecStyle
-      # Shadow resource property user is deprecated in favor of `users`
+      # Shadow resource properties `user|password|last_change|expiry_date|line` is deprecated in favor of `users|passwords|last_changes|expiry_dates|lines`
       #
       # @example EnforcedStyle: InSpecStyle (default)
       #   # Use users instead
@@ -23,57 +23,64 @@ module RuboCop
       #   end
       #
       class ShadowProperties < Cop
-        # TODO: Implement the cop in here.
-        #
-        # In many cases, you can use a node matcher for matching node pattern.
-        # See https://github.com/rubocop-hq/rubocop-ast/blob/master/lib/rubocop/node_pattern.rb
-        #
-        # For example
-        MSG = 'Use `:%<modifier>ss` instead of `:%<modifier>s` as a property ' \
+        include RangeHelp
+
+        MSG = 'Use `:%<violation>ss` instead of `:%<violation>s` as a property ' \
         'for the `shadow` resource. This property will be removed in InSpec 5'
 
-        def_node_matcher :shadow_resource_user_property?, <<~PATTERN
+        def_node_matcher :deprecated_shadow_property?, <<~PATTERN
           (block
-            (send _ :describe
-              (send _ :shadow ...) ...)
-            (args ...)
-            (block
-              (send _ :its
-                (str ${"user" "password" "last_change" "expiry_date" "line"} ...) ...) ...) ...)
+            (send _ :its
+              (str ${"user" "password" "last_change" "expiry_date" "line"}) ...)
+          ...)
         PATTERN
 
-        def_node_matcher :shadow_resource_user_property_begin?, <<~PATTERN
+        def_node_matcher :spec?, <<-PATTERN
           (block
-            (send _ :describe
-              (send _ :shadow ...) ...)
-            (args ...)
-            (begin
-              (block
-                (send _ :its
-                  (str ${"user" "password" "last_change" "expiry_date" "line"} ...) ...) ...) ...) ...)
+            (send nil? :describe ...)
+          ...)
+        PATTERN
+
+        def_node_matcher :shadow_resource?, <<-PATTERN
+          (block
+            (send nil? :describe
+              (send nil? :shadow ...)
+            ...)
+          ...)
         PATTERN
 
         def on_block(node)
-          if shadow_resource_user_property?(node)
-            shadow_resource_user_property?(node) do |modifier|
-              message = format(MSG, modifier: modifier)
-              range = locate_range(modifier, node)
-              add_offense(node, message: message, location: range)
+          return unless inside_shadow_spec?(node)
+          node.descendants.each do |descendant|
+            next unless deprecated_shadow_property?(descendant)
+            deprecated_shadow_property?(descendant) do |violation|
+              add_offense(
+                descendant,
+                location: offense_range(descendant),
+                message: format(
+                  MSG,
+                  violation: violation
+                )
+              )
             end
-          elsif shadow_resource_user_property_begin?(node)
-            # I believe I need a different matcher if there's other material in the block. This does not work yet
-            shadow_resource_user_property_begin? do |modifier|
-              message = format(MSG, modifier: modifier)
-              range = locate_range(modifier, node)
-              add_offense(node, message: message, location: range)
-            end
+          end
+        end
+
+        def autocorrect(node)
+          lambda do |corrector|
+            corrector.insert_after(offense_range(node), 's')
           end
         end
 
         private
 
-        def locate_range(modifier, node)
-          node.children.find { |child| child.type == :block }.children.first.children.find{|x| x == s(:str, modifier)}.source_range
+        def inside_shadow_spec?(root)
+          spec?(root) && shadow_resource?(root)
+        end
+
+        def offense_range(node)
+          source = node.children[0].children[-1].loc.expression
+          range_between(source.begin_pos+1, source.end_pos-1)
         end
       end
     end
