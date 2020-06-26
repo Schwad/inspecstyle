@@ -4,18 +4,18 @@ module RuboCop
   module Cop
     module InSpecStyle
       # @example EnforcedStyle: InSpecStyle (default)
-      #   # iis_website has been deprecated as a resource. Use iis_site instead
+      #   # windows_registry_key has been deprecated as a resource. Use registry_key instead
       #
-      class IisWebsite < Cop
-        MSG = 'Use `iis_site` instead of `iis_website`. '\
+      class WindowsRegistryKey < Cop
+        MSG = 'Use `registry_key` instead of `windows_registry_key`. '\
               'This resource will be removed in InSpec 5.'
 
-        def_node_matcher :iis_website?, <<~PATTERN
-          (send _ :iis_website ...)
+        def_node_matcher :windows_registry_key?, <<~PATTERN
+          (send _ :windows_registry_key ...)
         PATTERN
 
         def on_send(node)
-          return unless iis_website?(node)
+          return unless windows_registry_key?(node)
           add_offense(node, location: :selector)
         end
 

@@ -4,6 +4,11 @@ InSpecStyle/Apache:
   VersionAdded: '0.82'
   PreferredReplacement: 'apache_conf'
 
+InSpecStyle/AwsIamUserProperty:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '0.86'
+
 InSpecStyle/AzureGenericResource:
   Description: 'Do not use azure_generic_resource'
   Enabled: true
@@ -16,6 +21,11 @@ InSpecStyle/DeprecatedAttributes:
   VersionAdded: '0.82'
   StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
   PreferredReplacement: 'input'
+
+InSpecStyle/FileBeMounted:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '0.86'
 
 InSpecStyle/FileSize:
   Description: '`size` property for `file` resource is deprecated for `size_kb` and will be removed in InSpec5'
@@ -41,11 +51,28 @@ InSpecStyle/LinuxKernelParameter:
   VersionAdded: '0.82'
   PreferredReplacement: 'kernel_parameter'
 
+InSpecStyle/MSSQLSessionPass:
+  Description: 'mssql_session resource parameter pass is deprecated for password'
+  Enabled: true
+  VersionAdded: '0.82'
+
 InSpecStyle/OracleDbSessionPass:
   Description: 'Use `password` instead of `pass`'
   Enabled: true
   VersionAdded: '0.82'
   PreferredReplacement: 'password'
+
+InSpecStyle/PPAResource:
+  Description: 'The ppa resource is deprecated in favor of the apt resource'
+  Enabled: true
+  VersionAdded: '0.82'
+  PreferredReplacement: 'apt'
+
+InSpecStyle/ProcessesList:
+  Description: 'list property on processes resource is deprecated for entries'
+  Enabled: true
+  VersionAdded: '0.82'
+  PreferredReplacement: 'entries'
 
 InSpecStyle/ScriptResource:
   Description: 'Use powershell instead of script'
@@ -62,3 +89,14 @@ InSpecStyle/UsersResourceMatchers:
   Description: 'Deprecated matchers for the users resource'
   Enabled: true
   VersionAdded: '0.82'
+
+InSpecStyle/WindowsRegistryKey:
+  Description: 'The windows_registry_key resource is deprecated for registry_key'
+  Enabled: true
+  VersionAdded: '0.82'
+  PreferredReplacement: 'registry_key'
+
+InSpecStyle/WmiWmisClass:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '0.86'
