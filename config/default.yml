@@ -1,7 +1,7 @@
 InSpecStyle/Apache:
   Description: 'Use apache_conf instead of apache'
   Enabled: true
-  VersionAdded: '0.86'
+  VersionAdded: '0.82'
   PreferredReplacement: 'apache_conf'
 
 InSpecStyle/AzureGenericResource:
@@ -22,6 +22,24 @@ InSpecStyle/FileSize:
   Enabled: true
   VersionAdded: '0.82'
   PreferredReplacement: 'size_kb'
+
+InSpecStyle/HostProto:
+  Description: 'Proto property for host has been deprecated for protocol'
+  Enabled: true
+  VersionAdded: '0.82'
+  PreferredReplacement: 'protocol'
+
+InSpecStyle/IisWebsite:
+  Description: 'iis_website resource has been deprecated for iis_site'
+  Enabled: true
+  VersionAdded: '0.82'
+  PreferredReplacement: 'iis_site'
+
+InSpecStyle/LinuxKernelParameter:
+  Description: 'linux_kernel_parameter resource has been deprecated for kernel_parameter'
+  Enabled: true
+  VersionAdded: '0.82'
+  PreferredReplacement: 'kernel_parameter'
 
 InSpecStyle/OracleDbSessionPass:
   Description: 'Use `password` instead of `pass`'

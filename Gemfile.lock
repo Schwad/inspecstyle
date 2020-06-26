@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    inspecstyle (0.1.6)
+    inspecstyle (0.2.0)
       rubocop
 
 GEM
