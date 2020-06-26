@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-# NOTE TO SELF - this one works BUT not if other its statements are defined. Needs
-# to work in any arrangement. This is a powerful one to crack as this pattern
-# will be used in a LOT of other cops.
-
 module RuboCop
   module Cop
     module InSpecStyle

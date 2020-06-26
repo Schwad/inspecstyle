@@ -5,9 +5,9 @@ InSpecStyle/Apache:
   PreferredReplacement: 'apache_conf'
 
 InSpecStyle/AwsIamUserProperty:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '0.86'
+  Description: 'For the aws_iam_users resource name and user properties are deprecated. Use username and aws_user_struct instead'
+  Enabled: true
+  VersionAdded: '0.82'
 
 InSpecStyle/AzureGenericResource:
   Description: 'Do not use azure_generic_resource'
@@ -23,9 +23,9 @@ InSpecStyle/DeprecatedAttributes:
   PreferredReplacement: 'input'
 
 InSpecStyle/FileBeMounted:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '0.86'
+  Description: 'aws_iam_users resource name and user properties are deprecated for username and aws_user_struct'
+  Enabled: true
+  VersionAdded: '0.82'
 
 InSpecStyle/FileSize:
   Description: '`size` property for `file` resource is deprecated for `size_kb` and will be removed in InSpec5'
@@ -97,6 +97,7 @@ InSpecStyle/WindowsRegistryKey:
   PreferredReplacement: 'registry_key'
 
 InSpecStyle/WmiWmisClass:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '0.86'
+  Description: "wmi('wmisclass') is deprecated for wmi({class: wmisclass})"
+  Enabled: true
+  VersionAdded: '0.82'
+  PreferredReplacement: "wmi({class: 'wmisclass'})"

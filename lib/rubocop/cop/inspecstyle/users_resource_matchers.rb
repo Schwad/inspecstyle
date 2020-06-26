@@ -7,10 +7,9 @@
 module RuboCop
   module Cop
     module InSpecStyle
-      # Shadow resource properties `user|password|last_change|expiry_date|line` is deprecated in favor of `users|passwords|last_changes|expiry_dates|lines`
+      # Users resource deprecated matchers
       #
       # @example EnforcedStyle: InSpecStyle (default)
-      #   # Use users instead
       #
       #   # bad
       #   describe users('/etc/my-custom-place/users') do
@@ -85,7 +84,7 @@ module RuboCop
         end
 
         private
-        
+
         def inside_users_spec?(root)
           spec?(root) && users_resource?(root)
         end
