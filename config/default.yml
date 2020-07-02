@@ -15,6 +15,13 @@ InSpecStyle/AzureGenericResource:
   VersionAdded: '0.82'
   StyleGuide: 'https://github.com/inspec/inspec/issues/3131'
 
+InSpecStyle/DeprecatedAttributes1:
+  Description: 'Attributes are deprecated in favor of inputs'
+  Enabled: true
+  VersionAdded: '0.82'
+  StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
+  PreferredReplacement: 'input'
+
 InSpecStyle/DeprecatedAttributes:
   Description: 'Attributes are deprecated in favor of inputs'
   Enabled: true
