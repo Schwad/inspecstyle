@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: RuboCop::Cop::InSpecStyle::DeprecatedAttributes
+  Class: RuboCop::Cop::InSpecStyle::OracleDbSessionPass
   
     &mdash; Documentation by YARD 0.9.25
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  pathId = "RuboCop::Cop::InSpecStyle::DeprecatedAttributes";
+  pathId = "RuboCop::Cop::InSpecStyle::OracleDbSessionPass";
   relpath = '../../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../../_index.html">Index (D)</a> &raquo;
+    <a href="../../../_index.html">Index (O)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../../RuboCop.html" title="RuboCop (module)">RuboCop</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Cop.html" title="RuboCop::Cop (module)">Cop</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../InSpecStyle.html" title="RuboCop::Cop::InSpecStyle (module)">InSpecStyle</a></span></span>
      &raquo; 
-    <span class="title">DeprecatedAttributes</span>
+    <span class="title">OracleDbSessionPass</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: RuboCop::Cop::InSpecStyle::DeprecatedAttributes
+      <div id="content"><h1>Class: RuboCop::Cop::InSpecStyle::OracleDbSessionPass
   
   
   
@@ -76,7 +76,7 @@
           
             <li class="next"><span class='object_link'><a href="../../Cop.html" title="RuboCop::Cop (module)">RuboCop::Cop</a></span></li>
           
-            <li class="next">RuboCop::Cop::InSpecStyle::DeprecatedAttributes</li>
+            <li class="next">RuboCop::Cop::InSpecStyle::OracleDbSessionPass</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -91,7 +91,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd>RangeHelp</dd>
+      <dd>MatchRange</dd>
   </dl>
   
   
@@ -101,7 +101,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/rubocop/cop/inspecstyle/deprecated_attributes.rb</dd>
+    <dd>lib/rubocop/cop/inspecstyle/oracle_db_session_pass.rb</dd>
   </dl>
   
 </div>
@@ -109,8 +109,6 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Checks if deprecated method attribute is used.</p>
-
 
   </div>
 </div>
@@ -124,14 +122,13 @@
 <p>EnforcedStyle: InSpecStyle (default)</p>
 </div></p>
       
-      <pre class="example code"><code><span class='comment'># Attributes have been deprecated for inputs
-</span><span class='comment'># https://github.com/inspec/inspec/issues/3802
-</span>
-<span class='comment'># bad
-</span><span class='id identifier rubyid_attribute'>attribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>my_element</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>value:</span> <span class='int'>10</span><span class='rparen'>)</span>
+      <pre class="example code"><code># Description of the `bar` style.
 
-<span class='comment'># good
-</span><span class='id identifier rubyid_input'>input</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>my_element</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>value:</span> <span class='int'>10</span><span class='rparen'>)</span></code></pre>
+# bad
+sql = oracledb_session(user: &#39;my_user&#39;, pass: &#39;password&#39;)
+
+# good
+sql = oracledb_session(user: &#39;my_user&#39;, password: &#39;password</code></pre>
     
   </div>
 
@@ -148,7 +145,7 @@
         <dt id="MSG-constant" class="">MSG =
           
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Use `#input` instead of `#attribute`. This will be removed in </span><span class='tstring_end'>&#39;</span></span>\
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Use `:password` instead of `:pass`. This will be removed in </span><span class='tstring_end'>&#39;</span></span>\
 <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>InSpec 5</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
     </dl>
@@ -207,7 +204,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Getting location was a bit tricky on this one, looking at docs perhaps convention does allow highlighting an entire line.</p>
+</div></span>
   
 </li>
 
@@ -243,14 +242,14 @@
       <pre class="lines">
 
 
-34
-35
-36
-37
-38</pre>
+39
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rubocop/cop/inspecstyle/deprecated_attributes.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/rubocop/cop/inspecstyle/oracle_db_session_pass.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_autocorrect'>autocorrect</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_lambda'>lambda</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_corrector'>corrector</span><span class='op'>|</span>
@@ -271,25 +270,34 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Getting location was a bit tricky on this one, looking at docs perhaps convention does allow highlighting an entire line.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-28
-29
-30
-31
-32</pre>
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rubocop/cop/inspecstyle/deprecated_attributes.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/rubocop/cop/inspecstyle/oracle_db_session_pass.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_send'>on_send</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_attribute?'>attribute?</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_add_offense'>add_offense</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='comma'>,</span> <span class='label'>location:</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_selector'>selector</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_oracledb_session_pass?'>oracledb_session_pass?</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_add_offense'>add_offense</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='comma'>,</span> <span class='label'>message:</span> <span class='const'><span class='object_link'><a href="#MSG-constant" title="RuboCop::Cop::InSpecStyle::OracleDbSessionPass::MSG (constant)">MSG</a></span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -301,7 +309,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Jul  2 15:33:00 2020 by
+  Generated on Thu Jul  2 15:33:01 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.6.6).
 </div>

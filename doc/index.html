@@ -58,11 +58,15 @@
       </div>
 
       <div id="content"><div id='filecontents'>
+<h1 id="label-WIP-3A+This+gem+is+not+live-2C+but+we+would+love+your+help+and+input-21+Core+issue+here-3A+https-3A-2F-2Fgithub.com-2Finspec-2Finspec-2Fissues-2F5095">WIP: This gem is <strong>not</strong> live, but we would love your help and input! Core issue here: <a href="https://github.com/inspec/inspec/issues/5095">github.com/inspec/inspec/issues/5095</a></h1>
+
 <h1 id="label-InSpecStyle">InSpecStyle</h1>
 
 <p>Welcome to your new gem! In this directory, you&#39;ll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file <code>lib/rubocop/inspecstyle</code>. To experiment with that code, run <code>bin/console</code> for an interactive prompt.</p>
 
-<p>TODO: Delete this and the text above, and describe your gem</p>
+<h2 id="label-Full+Documentation">Full Documentation</h2>
+
+<p><a href="https://rubydoc.info/gems/inspecstyle">rubydoc.info/gems/inspecstyle</a></p>
 
 <h2 id="label-Installation">Installation</h2>
 
@@ -99,7 +103,25 @@ require:
 <h2 id="label-TODO-3A">TODO:</h2>
 <ul><li>
 <p>Instead of referencing issues in the cops, point to a general <code>inspecstyle.guide</code></p>
+</li><li>
+<p>Known issue, resources that work on manual runs but not in <code>atom</code> package: [</p>
+</li><li>
+<p>AzureGenericResource ]</p>
+</li><li>
+<p>Cop ideas: “<code> its(&#39;minimum_days_between_password_change&#39;) { should eq 0 } becomes &#39;mindays&#39; its(&#39;maximum_days_between_password_change&#39;) { should eq 0 } becomes &#39;maxdays&#39; Inspec.deprecate(:resource_user_serverspec_compat, &quot;The user resource</code>has_home_directory?<code>matcher is deprecated. Please use</code>its(&#39;home&#39;)<code>.&quot;) Inspec.deprecate(:resource_user_serverspec_compat, &quot;The user resource</code>has_authorized_key?` matcher is deprecated. There is no currently implemented alternative“)</p>
 </li></ul>
+
+<p>shadow resource deprecations (e.g.) describe shadow(&#39;/etc/my-custom-place/shadow&#39;) do  its(&#39;count&#39;) { should eq 32 } end</p>
+
+<p>property deprecations:</p>
+
+<p>user -&gt; users password -&gt; passwords last_change -&gt; last_changes expiry_date -&gt; expiry_dates lines (no replacement)</p>
+
+<p>e.g.</p>
+
+<p>sql = oracledb_session(user: &#39;my_user&#39;, pass: &#39;password&#39;)  describe sql.query(&quot;SELECT UPPER(VALUE) AS VALUE FROM V$PARAMETER WHERE UPPER(NAME)=&#39;AUDIT_SYS_OPERATIONS&#39;&quot;).row(0).column(&#39;value&#39;) do  its(&#39;value&#39;) { should eq &#39;TRUE&#39; }  end</p>
+
+<p>oracledb_session deprecated <code>pass</code>, use <code>password</code> instead “`</p>
 
 <h2 id="label-Development">Development</h2>
 
@@ -121,7 +143,7 @@ require:
 </div></div>
 
       <div id="footer">
-  Generated on Thu Jun 11 11:57:48 2020 by
+  Generated on Thu Jul  2 15:33:00 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.6.6).
 </div>

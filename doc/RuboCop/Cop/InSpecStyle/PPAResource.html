@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: RuboCop::Cop::InSpecStyle::AzureGenericResource
+  Class: RuboCop::Cop::InSpecStyle::PPAResource
   
     &mdash; Documentation by YARD 0.9.25
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  pathId = "RuboCop::Cop::InSpecStyle::AzureGenericResource";
+  pathId = "RuboCop::Cop::InSpecStyle::PPAResource";
   relpath = '../../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../../_index.html">Index (A)</a> &raquo;
+    <a href="../../../_index.html">Index (P)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../../RuboCop.html" title="RuboCop (module)">RuboCop</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Cop.html" title="RuboCop::Cop (module)">Cop</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../InSpecStyle.html" title="RuboCop::Cop::InSpecStyle (module)">InSpecStyle</a></span></span>
      &raquo; 
-    <span class="title">AzureGenericResource</span>
+    <span class="title">PPAResource</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: RuboCop::Cop::InSpecStyle::AzureGenericResource
+      <div id="content"><h1>Class: RuboCop::Cop::InSpecStyle::PPAResource
   
   
   
@@ -76,7 +76,7 @@
           
             <li class="next"><span class='object_link'><a href="../../Cop.html" title="RuboCop::Cop (module)">RuboCop::Cop</a></span></li>
           
-            <li class="next">RuboCop::Cop::InSpecStyle::AzureGenericResource</li>
+            <li class="next">RuboCop::Cop::InSpecStyle::PPAResource</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -96,7 +96,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/rubocop/cop/inspecstyle/azure_generic_resource.rb</dd>
+    <dd>lib/rubocop/cop/inspecstyle/ppa_resource.rb</dd>
   </dl>
   
 </div>
@@ -104,8 +104,6 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Do not use azure_generic_resource</p>
-
 
   </div>
 </div>
@@ -119,15 +117,7 @@
 <p>EnforcedStyle: InSpecStyle (default)</p>
 </div></p>
       
-      <pre class="example code"><code><span class='comment'># azure_generic_resource has been deprecated
-</span><span class='comment'># &#39;https://github.com/inspec/inspec/issues/3131&#39;
-</span><span class='comment'># Since there are multiples replacements autocorrect is not supported.
-</span>
-<span class='comment'># bad
-</span><span class='id identifier rubyid_azure_generic_resource'>azure_generic_resource</span>
-
-<span class='comment'># good
-</span><span class='id identifier rubyid_azurerm_virtual_machine'>azurerm_virtual_machine</span> <span class='comment'># use a specific resource pack resource</span></code></pre>
+      <pre class="example code"><code><span class='comment'># ppa has been deprecated as a resource. Use apt instead</span></code></pre>
     
   </div>
 
@@ -144,7 +134,7 @@
         <dt id="MSG-constant" class="">MSG =
           
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Use a specific resource instead of `#azure_generic_resource`. </span><span class='tstring_end'>&#39;</span></span>\
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Use `apt` instead of `ppa`. </span><span class='tstring_end'>&#39;</span></span>\
 <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This resource will be removed in InSpec 5.</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
     </dl>
@@ -163,6 +153,28 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#autocorrect-instance_method" title="#autocorrect (instance method)">#<strong>autocorrect</strong>(node)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -202,7 +214,41 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="on_send-instance_method">
+  <h3 class="signature first" id="autocorrect-instance_method">
+  
+    #<strong>autocorrect</strong>(node)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/rubocop/cop/inspecstyle/ppa_resource.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_autocorrect'>autocorrect</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_lambda'>lambda</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_corrector'>corrector</span><span class='op'>|</span>
+    <span class='id identifier rubyid_corrector'>corrector</span><span class='period'>.</span><span class='id identifier rubyid_replace'>replace</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_selector'>selector</span><span class='comma'>,</span> <span class='id identifier rubyid_preferred_replacement'>preferred_replacement</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="on_send-instance_method">
   
     #<strong>on_send</strong>(node)  &#x21d2; <tt>Object</tt> 
   
@@ -216,18 +262,16 @@
       <pre class="lines">
 
 
-27
-28
-29
-30
-31</pre>
+17
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rubocop/cop/inspecstyle/azure_generic_resource.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/rubocop/cop/inspecstyle/ppa_resource.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_send'>on_send</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_azure_generic_resource?'>azure_generic_resource?</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
-
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_ppa?'>ppa?</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_add_offense'>add_offense</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='comma'>,</span> <span class='label'>location:</span> <span class='symbol'>:selector</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
