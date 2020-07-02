@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require_relative 'inspecstyle/deprecated_attributes'
 require_relative 'inspecstyle/azure_generic_resource'
 require_relative 'inspecstyle/shadow_properties'
 require_relative 'inspecstyle/oracle_db_session_pass'
@@ -18,3 +17,4 @@ require_relative 'inspecstyle/aws_iam_user_property'
 require_relative 'inspecstyle/file_be_mounted'
 require_relative 'inspecstyle/wmi_wmis_class'
 require_relative 'inspecstyle/deprecated_attributes1'
+# require_relative 'inspecstyle/deprecated_attributes'
