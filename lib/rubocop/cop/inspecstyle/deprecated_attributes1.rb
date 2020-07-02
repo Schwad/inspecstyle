@@ -15,7 +15,7 @@ module RuboCop
       #   # good
       #   input('my_element', value: 10)
       #
-      class DeprecatedAttributes < Cop
+      class DeprecatedAttributes1 < Cop
         include RangeHelp
 
         MSG = 'Use `#input` instead of `#attribute1`. This will be removed in '\
