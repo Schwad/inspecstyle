@@ -22,12 +22,12 @@ InSpecStyle/DeprecatedAttributes1:
   StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
   PreferredReplacement: 'input'
 
-# InSpecStyle/DeprecatedAttributes:
-#   Description: 'Attributes are deprecated in favor of inputs'
-#   Enabled: true
-#   VersionAdded: '0.82'
-#   StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
-#   PreferredReplacement: 'input'
+InSpecStyle/DeprecatedAttributes:
+  Description: 'Attributes are deprecated in favor of inputs'
+  Enabled: true
+  VersionAdded: '0.82'
+  StyleGuide: 'https://github.com/inspec/inspec/issues/3802'
+  PreferredReplacement: 'input'
 
 InSpecStyle/FileBeMounted:
   Description: 'aws_iam_users resource name and user properties are deprecated for username and aws_user_struct'
