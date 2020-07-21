@@ -27,6 +27,12 @@ module RuboCop
           add_offense(node, location: :selector)
         end
 
+        def on_block(node)
+          return unless script?(node)
+
+          add_offense(node, location: :selector)
+        end
+
         def autocorrect(node)
           lambda do |corrector|
             corrector.replace(node.loc.selector, preferred_replacement)

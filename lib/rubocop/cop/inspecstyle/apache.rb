@@ -17,8 +17,7 @@ module RuboCop
       #   azurerm_virtual_machine # use a specific resource pack resource
       #
       class Apache < Cop
-        MSG = 'Use a `apache_conf` instead of `#apache`. '\
-              'This resource will be removed in InSpec 5.'
+        MSG = 'Use `apache_conf` instead of `#apache`.'
 
         def_node_matcher :spec?, <<-PATTERN
           (block

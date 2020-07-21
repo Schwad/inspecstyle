@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::InSpecStyle::Script do
+RSpec.describe RuboCop::Cop::InSpecStyle::ShadowProperties do
   subject(:cop) { described_class.new(config) }
 
   let(:config) { RuboCop::Config.new }
