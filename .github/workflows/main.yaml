@@ -10,5 +10,9 @@ jobs:
       fail-fast: false
 
     steps:
+      - name: setup bundler
+        run: gem install bundler
+      - name: bundle install
+        run: bundle install
       - name: run the tests
         run: bundle exec rspec
