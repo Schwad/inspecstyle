@@ -10,9 +10,7 @@ jobs:
       fail-fast: false
 
     steps:
-      - name: setup bundler
-        run: gem install bundler
-      - name: bundle install
-        run: bundle install
-      - name: run the tests
-        run: bundle exec rspec
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1.40.0
+      - run: bundle install
+      - run: bundle exec rspec
