@@ -21,8 +21,7 @@ module RuboCop
       class AwsIamUserProperty < Cop
         include RangeHelp
 
-        MSG = 'Use `:%<solution>s` instead of `:%<violation>s` as a property ' \
-        'for the `aws_iam_user` resource. This property will be removed in InSpec 5'
+        MSG = 'Use `:%<solution>s` instead of `:%<violation>s` as a property'
 
         MAP = {
           user: "aws_user_struct",

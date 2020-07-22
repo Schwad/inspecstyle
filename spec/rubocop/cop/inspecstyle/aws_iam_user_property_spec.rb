@@ -5,19 +5,21 @@ RSpec.describe RuboCop::Cop::InSpecStyle::AwsIamUserProperty do
 
   let(:config) { RuboCop::Config.new }
 
-  # TODO: Write test code
-  #
-  # For example
-  it 'registers an offense when using `#bad_method`' do
+  it 'registers an offense when using property `:name`' do
     expect_offense(<<~RUBY)
-      bad_method
-      ^^^^^^^^^^ Use `#good_method` instead of `#bad_method`.
+    describe aws_iam_users do
+      its('name') { should eq 'user' }
+           ^^^^ Use `:username` instead of `:name` as a property
+    end
     RUBY
   end
 
-  it 'does not register an offense when using `#good_method`' do
-    expect_no_offenses(<<~RUBY)
-      good_method
+  it 'registers an offense when using property `:user`' do
+    expect_offense(<<~RUBY)
+    describe aws_iam_users do
+      its('user') { should eq 'user' }
+           ^^^^ Use `:aws_user_struct` instead of `:user` as a property
+    end
     RUBY
   end
 end
