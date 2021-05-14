@@ -1,4 +1,8 @@
-# WIP: This gem is __not__ live, but we would love your help and input! Core issue here: https://github.com/inspec/inspec/issues/5095
+/* Copyright (C) Nick Schwaderer - All Rights Reserved
+ * Unauthorized copying of these files, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by Nick Schwaderer <nicholas.schwaderer@gmail.com>, May 2021
+ */
 
 
 # InSpecStyle
